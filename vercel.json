@@ -7,6 +7,5 @@
       "source": "/jianguoyun/:match*",
       "destination": "https://dav.jianguoyun.com/dav/:match*"
     }
-  ],
-  "ignoreCommand": "git check-ignore -v ."
+  ]
 }
