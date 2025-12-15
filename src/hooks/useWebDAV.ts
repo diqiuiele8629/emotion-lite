@@ -60,13 +60,20 @@ export const useWebDAV = () => {
     localStorage.setItem(WEBDAV_CONFIG_KEY, JSON.stringify(newConfig));
   };
 
+  const getProxyUrl = (originalUrl: string) => {
+    if (originalUrl.includes('jianguoyun.com')) {
+      return '/jianguoyun';
+    }
+    return originalUrl;
+  };
+
   // 同步到云端
   const syncToCloud = async (currentData: UserData = data) => {
     if (!config.enabled || !config.url || !config.username) return;
 
     setSyncStatus('syncing');
     try {
-      const client = createClient(config.url, {
+      const client = createClient(getProxyUrl(config.url), {
         username: config.username,
         password: config.password,
         authType: AuthType.Password
@@ -110,7 +117,7 @@ export const useWebDAV = () => {
      if (!config.enabled || !config.url || !config.username) return;
      setSyncStatus('syncing');
      try {
-        const client = createClient(config.url, {
+        const client = createClient(getProxyUrl(config.url), {
             username: config.username,
             password: config.password,
             authType: AuthType.Password

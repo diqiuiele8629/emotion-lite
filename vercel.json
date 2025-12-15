@@ -2,5 +2,11 @@
   "framework": "vite",
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
+  "rewrites": [
+    {
+      "source": "/jianguoyun/:match*",
+      "destination": "https://dav.jianguoyun.com/dav/:match*"
+    }
+  ],
   "ignoreCommand": "git check-ignore -v ."
 }

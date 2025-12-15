@@ -4,6 +4,15 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    proxy: {
+      '/jianguoyun': {
+        target: 'https://dav.jianguoyun.com/dav/',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/jianguoyun/, '')
+      }
+    }
+  },
   plugins: [
     react(),
     VitePWA({
